@@ -5,7 +5,7 @@ using UnityEngine.Events;
 
 [RequireComponent(typeof(TextMeshProUGUI))]
 
-public class TextLabelBehavior : MonoBehaviour
+public class TextMeshProLabelBehavior : MonoBehaviour
 {
     private TextMeshProUGUI label;
     public UnityEvent startEvent;
