@@ -1,4 +1,4 @@
-using Unity.Mathematics;
+    using Unity.Mathematics;
 using UnityEngine;
 
 [CreateAssetMenu]
@@ -11,12 +11,12 @@ public class Instancer : ScriptableObject
         Instantiate(prefab);
     }
 
-    public void CreateInstanceFromList(Vector3Data obj)
+    public void CreateInstance(Vector3Data obj)
     {
         Instantiate(prefab, obj.value, Quaternion.identity);
     }
 
-    public void CreateInstance(Vector3DataList obj)
+    public void CreateInstanceFromList(Vector3DataList obj)
     {
         foreach (var i in obj.vector3DList)
         {
