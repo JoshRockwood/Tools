@@ -12,7 +12,7 @@ public class ColorIDDataList : ScriptableObject
 
    public void SetCurrentColorRandomly()
    {
-        num = colorIDList.Count - 1;
-        currentColor = colorIDList[num];
+      num = colorIDList.Count - 1;
+      currentColor = colorIDList[num];
    }
 }
