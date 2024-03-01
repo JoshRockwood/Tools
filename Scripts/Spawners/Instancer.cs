@@ -1,10 +1,11 @@
-    using Unity.Mathematics;
+using Unity.Mathematics;
 using UnityEngine;
 
 [CreateAssetMenu]
 public class Instancer : ScriptableObject
 {
     public GameObject prefab;
+    public GameObject instantiationPoint;
     private int num;
     public void CreateInstance()
     {
@@ -38,5 +39,11 @@ public class Instancer : ScriptableObject
     {
         num = UnityEngine.Random.Range(0, obj.vector3DList.Count - 1);
         Instantiate(prefab, obj.vector3DList[num].value, Quaternion.identity);
+    }
+
+    public void CreateInstanceFromPoint(GameObject obj)
+    {
+        Quaternion rotation = prefab.transform.rotation;
+        Instantiate(prefab, obj.transform.position, rotation);
     }
 }
