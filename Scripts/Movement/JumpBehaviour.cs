@@ -12,9 +12,14 @@ public class JumpBehaviour : MonoBehaviour
     {
         controller = GetComponent<CharacterController>();
     }
+
+    public void Update()
+    {
+        velocity.y += gravity * Time.deltaTime;
+        controller.Move(velocity * Time.deltaTime);
+    }
     public void Jump()
     {
-        Debug.Log("Jump Method Called");
         if (!controller.isGrounded)
         {
             velocity.y += gravity * Time.deltaTime;
