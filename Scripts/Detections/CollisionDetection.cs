@@ -4,6 +4,7 @@ using UnityEngine.Events;
 public class CollisionDetection : MonoBehaviour
 {
     public UnityEvent collisionEnterEvent, enemyCollisionEvent, playerCollisionEvent, collisionExitEvent;
+    private bool hasCollided = false;
 
     private void OnTriggerEnter(Collider other)
     {
@@ -15,6 +16,7 @@ public class CollisionDetection : MonoBehaviour
     private void OnCollisionExit()
     {
         collisionExitEvent.Invoke();
+        hasCollided = false;
     }
 
     private void EnemyCollision(Collider other)
@@ -27,9 +29,10 @@ public class CollisionDetection : MonoBehaviour
 
     private void PlayerCollision(Collider other)
     {
-        if (other.CompareTag("Player"))
+        if (other.CompareTag("Player") && !hasCollided)
         {
             playerCollisionEvent.Invoke();
+            hasCollided = true;
         }
     }
 }
