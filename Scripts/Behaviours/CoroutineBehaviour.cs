@@ -5,9 +5,11 @@ using UnityEngine.Events;
 public class CoroutineBehaviour : MonoBehaviour
 {
     public bool canRun;
-    public UnityEvent startEvent, startCountEvent, repeatCountEvent, endCountEvent, repeatUntilFalseEvent;
+    public UnityEvent startEvent, startCountEvent, repeatCountEvent, endCountEvent, repeatUntilFalseEvent, randomSpawnTimer;
     public IntData counterNum;
     public float seconds = 3.0f;
+    public float minSpawnDelay = 1.0f;
+    public float maxSpawnDelay = 3.0f;
     private WaitForSeconds wfsObj;
     private WaitForFixedUpdate wffuObj;
 
@@ -52,6 +54,19 @@ public class CoroutineBehaviour : MonoBehaviour
         {
             yield return wfsObj;
             repeatUntilFalseEvent.Invoke();
+        }
+    }
+    public void StartRandomSpawn()
+    {
+        canRun = true;
+        StartCoroutine(RandomSpawnTimer());
+    }
+    private IEnumerator RandomSpawnTimer()
+    {
+        while (canRun)
+        {
+            yield return new WaitForSeconds(Random.Range(minSpawnDelay, maxSpawnDelay));
+            randomSpawnTimer.Invoke();
         }
     }
 }
